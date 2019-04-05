@@ -1,6 +1,33 @@
 <!DOCTYPE html>
-<script>
-    function computerPlay(){
+<script> 
+    function playRound(playerSelection, computerSelection) {
+        let playerWins = false;
+        let result;
+
+        switch (playerSelection.toUpperCase()) {
+            case "ROCK":
+                if (computerSelection == "SCISSORS")
+                    playerWins = true;
+                break;
+            case "PAPER":
+                if (computerSelection == "ROCK")
+                    playerWins = true;
+                break;
+            case "SCISSORS":
+                if (computerSelection == "PAPER")
+                    playerWins = true;
+                break;
+        }
+
+        if (playerWins)
+            result = `YOU WIN! ${playerSelection} beats ${computerSelection}`;
+        else
+            result = `YOU LOSE! ${computerSelection} beats ${playerSelection}`;
+            
+        return result;
+    }
+
+    function computerPlay() {
         let methodValue1 = Math.random() * 3;
         let random = Math.floor(methodValue1);
         let choice = '';
@@ -16,6 +43,12 @@
                 choice = "SCISSORS";
                 break;
         }
+
+        return choice;
     }
+
+    const playerSelection = "rock";
+
+    console.log(playRound(playerSelection.toUpperCase(), computerPlay()))
 
 </script>
