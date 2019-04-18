@@ -1,0 +1,9 @@
+.choice{
+    border-radius: 50%;
+    border: none;
+}
+
+#choices{
+    position: relative;
+    text-align: center;
+}
