@@ -1,45 +1,18 @@
-/*
-function game() {
-    let rounds = 5;
-    let winner;
-    let playerScore = 0;
-    let computerScore = 0;
-    let playerSelection;
-    let result;
+let choices = document.querySelectorAll('.choice');
 
-    for (let i = 0; i < rounds; i++) {
-        console.log(`ROUND ${i + 1}`)
-
-        playerSelection = prompt("Choose rock, paper or scissors: ").toUpperCase();
-        winner = playRound(playerSelection, computerPlay())
-
-        if (winner == "player")
-            playerScore++;
-        else if (winner == "computer")
-            computerScore++;
-
-        console.log(`Round Winner: ${winner}`);
-        console.log(`Player Score: ${playerScore} || Computer Score: ${computerScore}\n####################################`);
-    }
-
-    if (playerScore > computerScore)
-        result = `YOU WIN! ${playerScore} VS ${computerScore}`;
-    else if (computerScore > playerScore)
-        result = `YOU LOSE! ${computerScore} VS ${playerScore}`;
-    else
-        result = `IT'S A TIE! ${playerScore} VS ${computerScore}`;
-
-    return result;
-}
-*/
+choices.forEach((choice) => {
+    choice.addEventListener('click', () => {
+        playRound(choice.id, computerPlay())
+    })
+})
 
 function playRound(playerSelection, computerSelection) {
     let playerWins;
     let draw;
     let result;
     let winner;
-
-
+    playerSelection = playerSelection.toUpperCase();
+    
     if (playerSelection != computerSelection) {
         switch (playerSelection) {
             case "ROCK":
@@ -60,9 +33,13 @@ function playRound(playerSelection, computerSelection) {
         draw = true;
     }
 
+    let playerScore = document.querySelector('#player-score');
+    let computerScore = document.querySelector('#computer-score');
+
     if (playerWins) {
         result = `YOU WIN! ${playerSelection} beats ${computerSelection}`;
         winner = "player";
+        playerScore.textContent++;
     }
     else if (draw) {
         result = `IT'S A TIE! ${playerSelection} equals ${computerSelection}`;
@@ -71,6 +48,7 @@ function playRound(playerSelection, computerSelection) {
     else {
         result = `YOU LOSE! ${computerSelection} beats ${playerSelection}`;
         winner = "computer";
+        computerScore.textContent++;
     }
 
     console.log(`Player selection: ${playerSelection} \nComputer selection: ${computerSelection}\n`);
@@ -98,5 +76,3 @@ function computerPlay() {
 
     return choice;
 }
-
-console.log(game());

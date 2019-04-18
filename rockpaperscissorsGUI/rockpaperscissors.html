@@ -6,10 +6,22 @@
 </head>
 
 <body>
-    <div id="choices">
-        <button class="choice" id="rock"><img src="./assets/imgs/rock.png"></button>
-        <button class="choice" id="paper"><img src="./assets/imgs/paper.png"></button>
-        <button class="choice" id="scissors"><img src="./assets/imgs/scissors.png"></button>
+    <div class="game">
+        <div id="choices">
+            <input type="image" class="choice" id="rock" src="./assets/imgs/rock.png">
+            <input type="image" class="choice" id="paper" src="./assets/imgs/paper.png">
+            <input type="image" class="choice" id="scissors" src="./assets/imgs/scissors.png">
+        </div>
+        <div id="score">
+            <div class="individual-score" id="player">
+                <label for="player-score">Player</label>
+                <div id="player-score">0</div>
+            </div>
+            <div class="individual-score" id="computer">
+                <label for="computer-score">Computer</label>
+                <div id="computer-score">0</div>
+            </div>
+        </div>
     </div>
 </body>
 <footer>

@@ -1,9 +1,37 @@
 .choice{
     border-radius: 50%;
-    border: none;
+    width: 150px;
+    margin: 0 20px 0 20px;
+    outline: none;
 }
 
 #choices{
     position: relative;
     text-align: center;
+}
+
+#score{ 
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 100px;
+    font-family: 'Arial'
+}
+
+.game{
+    position: relative;
+    border-style: solid;
+    border-width: thin;
+    border-radius: 10px;
+    margin: 100px 300px 100px 300px;
+    padding: 50px;
+}
+
+.individual-score{
+    border-style: solid;
+    border-width: thin;
+    border-radius: 10px;
+    width: 100px; 
+    margin: 0 20px 0 20px;
+    padding: 5px;
 }
