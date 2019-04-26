@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 
 <head>
-    <title>ROCK, PAPER, SCISSORS !!!</title>
+    <title>ROCK, PAPER, SCISSORS</title>
     <link rel="stylesheet" href="./rockpaperscissors.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 
 <body>
+    <h1>Rock, Paper, Scissors!</h1>
     <div class="game">
         <div id="choices">
             <input type="image" class="choice" id="rock" src="./assets/imgs/rock.png">
@@ -13,10 +15,12 @@
             <input type="image" class="choice" id="scissors" src="./assets/imgs/scissors.png">
         </div>
         <div id="score">
+            <div class="selection" id="div-player-selection"></div>
             <div class="individual-score" id="player">
                 <label for="player-score">Player</label>
                 <div id="player-score">0</div>
             </div>
+            <div class="selection" id="div-computer-selection"></div>
             <div class="individual-score" id="computer">
                 <label for="computer-score">Computer</label>
                 <div id="computer-score">0</div>

@@ -12,7 +12,7 @@ function playRound(playerSelection, computerSelection) {
     let result;
     let winner;
     playerSelection = playerSelection.toUpperCase();
-    
+
     if (playerSelection != computerSelection) {
         switch (playerSelection) {
             case "ROCK":
@@ -51,9 +51,25 @@ function playRound(playerSelection, computerSelection) {
         computerScore.textContent++;
     }
 
-    console.log(`Player selection: ${playerSelection} \nComputer selection: ${computerSelection}\n`);
-    console.log(`${result}\n`);
+    let scoreContainer = document.querySelector('#score');
+    
+    if (!document.querySelector('#result-container'))
+    {
+        let resultContainer = document.createElement('div');
+        resultContainer.setAttribute('id', 'result-container');
+        resultContainer.innerText = `${result}`;
+        scoreContainer.parentNode.insertBefore(resultContainer, scoreContainer);
+    }
+    
+    let resultContainer = document.querySelector('#result-container');
+    resultContainer.innerText = `${result}`;
+    
+    let divPlayerSelection = document.querySelector('#div-player-selection');
+    divPlayerSelection.innerText = `${playerSelection}\n`;
 
+    let divComputerSelection = document.querySelector('#div-computer-selection');
+    divComputerSelection.innerText = `${computerSelection}\n`;
+    
     return winner;
 }
 

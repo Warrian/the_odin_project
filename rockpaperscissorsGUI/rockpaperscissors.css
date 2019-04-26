@@ -1,3 +1,8 @@
+h1{
+    font-family: 'Lobster', Georgia, Times, serif;
+    text-align: center;
+}
+
 .choice{
     border-radius: 50%;
     width: 150px;
@@ -14,16 +19,16 @@
     display: flex;
     text-align: center;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 54px;
     font-family: 'Arial'
 }
 
 .game{
-    position: relative;
+    position: absolute;
     border-style: solid;
     border-width: thin;
     border-radius: 10px;
-    margin: 100px 300px 100px 300px;
+    margin: 10px 300px 100px 300px;
     padding: 50px;
 }
 
@@ -34,4 +39,13 @@
     width: 100px; 
     margin: 0 20px 0 20px;
     padding: 5px;
+}
+
+#result-container{
+    text-align: center;
+}
+
+.selection{
+    display: flex;
+    justify-content: center;
 }
