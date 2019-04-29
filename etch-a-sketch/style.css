@@ -1,0 +1,15 @@
+.container{
+    display: grid;
+}
+
+.row{
+    grid-template-rows: 1px;
+    
+}
+
+.pixel{
+    border-style: solid;
+    border-width: thin;
+    padding: 10px;
+    float: left;
+}
