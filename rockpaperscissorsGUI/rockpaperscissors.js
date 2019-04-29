@@ -2,7 +2,14 @@ let choices = document.querySelectorAll('.choice');
 
 choices.forEach((choice) => {
     choice.addEventListener('click', () => {
-        playRound(choice.id, computerPlay())
+        let winner = '';
+
+        winner = playRound(choice.id, computerPlay())
+
+        if (winner !== '' && winner !== undefined) {
+            alert(`${winner} WINS!`);
+            location.reload();
+        }
     })
 })
 
@@ -11,6 +18,7 @@ function playRound(playerSelection, computerSelection) {
     let draw;
     let result;
     let winner;
+    let rounds = 5;
     playerSelection = playerSelection.toUpperCase();
 
     if (playerSelection != computerSelection) {
@@ -38,38 +46,42 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerWins) {
         result = `YOU WIN! ${playerSelection} beats ${computerSelection}`;
-        winner = "player";
         playerScore.textContent++;
     }
     else if (draw) {
         result = `IT'S A TIE! ${playerSelection} equals ${computerSelection}`;
-        winner = "draw";
     }
     else {
         result = `YOU LOSE! ${computerSelection} beats ${playerSelection}`;
-        winner = "computer";
         computerScore.textContent++;
     }
 
     let scoreContainer = document.querySelector('#score');
-    
-    if (!document.querySelector('#result-container'))
-    {
+
+    if (!document.querySelector('#result-container')) {
         let resultContainer = document.createElement('div');
         resultContainer.setAttribute('id', 'result-container');
         resultContainer.innerText = `${result}`;
         scoreContainer.parentNode.insertBefore(resultContainer, scoreContainer);
     }
-    
+
     let resultContainer = document.querySelector('#result-container');
     resultContainer.innerText = `${result}`;
-    
+    resultContainer.setAttribute('style', 'margin-top: 20px; margin-bottom: -20px')
+
     let divPlayerSelection = document.querySelector('#div-player-selection');
     divPlayerSelection.innerText = `${playerSelection}\n`;
 
     let divComputerSelection = document.querySelector('#div-computer-selection');
     divComputerSelection.innerText = `${computerSelection}\n`;
-    
+
+    if (computerScore.textContent == rounds) {
+        winner = 'Computer';
+    }
+    else if (playerScore.textContent == rounds) {
+        winner = 'Player';
+    }
+
     return winner;
 }
 
