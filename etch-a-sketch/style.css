@@ -1,15 +1,17 @@
-.container{
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
     display: grid;
-}
-
-.row{
-    grid-template-rows: 1px;
-    
-}
-
-.pixel{
+    width: 600px;
+    height: 600px;
     border-style: solid;
     border-width: thin;
-    padding: 10px;
-    float: left;
+}
+
+.pixel {
+    border-style: ridge;
+    border-width: thin;
 }
