@@ -1,17 +1,30 @@
-body {
-    display: flex;
-    justify-content: center;
-}
-
-.container {
+.canvas{
+    position: relative;
     display: grid;
     width: 600px;
     height: 600px;
     border-style: solid;
     border-width: thin;
+    margin-right: 250px;
 }
 
-.pixel {
-    border-style: ridge;
-    border-width: thin;
+.canvas-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button{
+    /* position: relative; */
+    display: flex;
+    margin: 10px;
+    padding: 10px;
+}
+
+.buttons-container{
+    display: block;
+    padding: 10px;
+}
+
+#color-button{
+    padding: 20px;
 }
