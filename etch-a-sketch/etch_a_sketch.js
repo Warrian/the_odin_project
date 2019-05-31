@@ -9,7 +9,9 @@ colorButton.setAttribute('style', 'background-image: linear-gradient(to left, vi
 
 resetButton.addEventListener('click', () => {
     pixels = prompt('Quantity of squares per side: ');
-    makeCanvas(pixels);
+
+    if (pixels)
+        makeCanvas(pixels);
 })
 
 colorButton.addEventListener('click', () => {
@@ -41,22 +43,29 @@ function makeCanvas(pixels) {
 
     for (i = 0; i < pixels * pixels; i++) {
         let pixel = document.createElement('div');
-        pixel.setAttribute('style', 'filter: brightness(100%)');
+        pixel.setAttribute('class', 'pixel');
+        pixel.style.filter = 'brightness(100%)';
         canvas.appendChild(pixel);
+    }
 
+    setColor();
+}
+
+function setColor() {
+    let canvasPixels = document.querySelectorAll('.pixel');
+
+    canvasPixels.forEach((pixel) => {
         pixel.addEventListener('mouseover', () => {
-            if (brush == 'black')
-            pixel.setAttribute('style', `background: black;`);
+            if (brush == 'black' && pixel.style.background == '')
+                pixel.style.background = 'black';
             else if (brush == 'random' && pixel.style.background == '')
-                pixel.setAttribute('style', `background: ${getRandomColor()};`);
+                pixel.style.background = `${getRandomColor()}`;
             else {
-                let brightness = parseInt(pixel.getAttribute('filter').match(/\d+/));
+                let brightness = parseInt(pixel.style.filter.match(/\d+/));
                 pixel.style.filter = `brightness(${brightness - 10}%)`;
             }
-
-            
         })
-    }
+    })
 }
 
 function getRandomColor() {
