@@ -1,75 +1,132 @@
 const buttons = document.querySelectorAll('button');
-let display = document.querySelector('.display');
+let operation = document.querySelector('.operation');
+let result = document.querySelector('.result');
+result.textContent = '0';
+let expression = [];
+let operand = '0';
+let resultDisplayed = false;
+let lastResult = '';
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        ButtonClick(button.id);
-    })
-
-    button.addEventListener('mouseover', () => {
-        button.classList.add('button-hover');
-    })
-
-    button.addEventListener('mouseout', () => {
-        button.classList.remove('button-hover');
+        ButtonClick(button);
     })
 })
 
-function ButtonClick(btn) {
-    switch (btn) {
+function ButtonClick(input) {
+    if (input.id != 'clear' && input.id != 'erase') {
+        if (resultDisplayed) {
+            ClearEverything();
+            operand = lastResult;
+            resultDisplayed = false;
+        }
+
+        SetValue(input.textContent);
+    }
+
+    switch (input.id) {
         case 'clear':
-            display.textContent = ''
+            ClearEverything();
             break;
         case 'erase':
-            // display.textContent.
-            break;
-        case 'dot':
-            display.textContent += '.'
-            break;
-        case 'plus':
-            display.textContent += '+'
-            break;
-        case 'seven':
-            display.textContent += '7'
-            break;
-        case 'eight':
-            display.textContent += '8'
-            break;
-        case 'nine':
-            display.textContent += '9'
-            break;
-        case 'minus':
-            display.textContent += '-'
-            break;
-        case 'four':
-            display.textContent += '4'
-            break;
-        case 'five':
-            display.textContent += '5'
-            break;
-        case 'six':
-            display.textContent += '6'
-            break;
-        case 'multiply':
-            display.textContent += 'x'
-            break;
-        case 'one':
-            display.textContent += '1'
-            break;
-        case 'two':
-            display.textContent += '2'
-            break;
-        case 'three':
-            display.textContent += '3'
-            break;
-        case 'divide':
-            display.textContent += '/'
-            break;
-        case 'zero':
-            display.textContent += '0'
+            Erase();
             break;
         case 'equals':
-            // display.textContent += '/'
+            Evaluate();
             break;
     }
+}
+
+function ClearEverything() {
+    operation.textContent = '';
+    result.textContent = '0';
+    operand = '0';
+    expression = [];
+}
+
+function Erase() {
+    if (operation.textContent == '' && operand == '0' || resultDisplayed)
+        return;
+
+    let opArray = Array.from(operand);
+    opArray.pop();
+    operand = opArray.join('').toString() || 0;
+
+    result.textContent = operand
+}
+
+function SetValue(input) {
+    if (isNaN(input) && input != '.') {
+        expression.push(operand);
+        operand = '0';
+
+        if (input != '=')
+            expression.push(input);
+
+        result.textContent = '0';
+        operation.textContent = expression.join(' ').toString();
+    }
+    else {
+        if (result.textContent == '0' && input != '.') {
+            result.textContent = input;
+            operand = input;
+        }
+        else {
+            if (result.textContent == '0')
+                operand = '0';
+
+            result.textContent += input;
+            operand += input;
+        }
+    }
+}
+
+function MultiplyDivide(expression) {
+    let res = 0;
+
+    if (expression.includes('x') || expression.includes('÷')) {
+
+        let multiplicationIndex = expression.findIndex((e) => e == 'x');
+
+        if (multiplicationIndex > 0) {
+            res = parseFloat(expression[multiplicationIndex - 1]) * parseFloat(expression[multiplicationIndex + 1]);
+            expression.splice(multiplicationIndex - 1, 3, res.toString());
+        }
+
+        return MultiplyDivide(expression);
+    }
+
+    return expression;
+}
+
+function Evaluate() {
+    let res = 0;
+
+    expression = MultiplyDivide(expression);
+
+    if (expression.length > 1) {
+        for (let i = 0; i < expression.length; i++) {
+            switch (expression[i]) {
+                case '+':
+                    res = parseFloat(expression[i - 1]) + parseFloat(expression[i + 1]);
+                    expression.splice(i - 1, 3, res.toString());
+                    i = 0;
+                    break;
+                case '-':
+                    res = parseFloat(expression[i - 1]) - parseFloat(expression[i + 1]);
+                    expression.splice(i - 1, 3, res.toString());
+                    i = 0;
+                    break;
+            }
+        }
+    }
+    else {
+        res = expression;
+    }
+
+    operand = res.toString();
+    result.textContent = res;
+    expression = [];
+    resultDisplayed = true;
+    lastResult = operand;
 }
