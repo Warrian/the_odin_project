@@ -6,9 +6,9 @@ body{
     border-style: solid;
     border-radius: 10px;
     width: 300px;
-    height: 400px;
+    height: 500px;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 50px;
     background-color: rgb(27, 25, 25);
 }
 
@@ -16,27 +16,39 @@ body{
     border-style: solid;
     border-width: thin;
     border-radius: 10px;
-    height: 80px;
+    height: 30%;
     margin: 20px 10px 5px 10px;
     background-color: #FFFAFA;
     text-align: end;
+    font-family: 'Lucida Sans'
 }
 
 .operation{
     height: 30%;
     padding: 5px 10px 0px 10px;
-    font-size: 20px;
+    font-size: 40px;
+    overflow: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    white-space: nowrap;
+    margin-top: 10px;
 }
 
 .result{
-    height: 70%;
-    font-size: 40px;
+    height: 60%;
+    font-size: 60px;
+    padding-right: 10px;
+    margin-top: 15px;
+    overflow: auto;
+    overflow-y: hidden;
+    scrollbar-width: thin;
+    white-space: nowrap;
 }
 
 .keyboard{
     display: grid;
-    height: 70%;
-    margin: 15px 5px;
+    height: 60%;
+    margin: 20px 10px 10px 10px;
 }
 
 .keyboard-row{
@@ -52,18 +64,19 @@ button{
     background-color: #FF7733;
     border-radius: 10px;
     margin: 3px;
+    outline: none;
 }
 
 #zero, #equals{
     width: 50%;
 }
 
-button:hover{
+button:active{
     border-color:  rgb(27, 25, 25);
     background-color: #DB5B1A;
 }
 
-.number:hover{
+.number:active{
     border-color: rgb(27, 25, 25);
     background-color: #696969;
 }
@@ -71,4 +84,25 @@ button:hover{
 .number{
     background-color: #A9A9A9;
     font-weight: bold;
+}
+
+/* width */
+::-webkit-scrollbar {
+    /* width: 100px; */
+    height: 5px;
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: transparent; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #A9A9A9; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #696969; 
 }

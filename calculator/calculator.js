@@ -13,7 +13,69 @@ buttons.forEach((button) => {
     })
 })
 
+window.onkeyup = (e) => {
+    let key = ConvertKeyInput(e);
+
+    if (key.id)
+        ButtonClick(key);
+}
+
+function ConvertKeyInput(key) {
+    let inputId = '';
+    let inputTextContent = '';
+
+    switch (key.key) {
+        case '.':
+            inputId = 'dot';
+            inputTextContent = '.';
+            break;
+        case 'Enter':
+            inputId = 'equals';
+            inputTextContent = '=';
+            break;
+        case 'Backspace':
+            inputId = 'erase';
+            break;
+        case '+':
+            inputId = 'plus';
+            inputTextContent = '+';
+            break;
+        case '-':
+            inputId = 'minus';
+            inputTextContent = '-';
+            break;
+        case '*':
+            inputId = 'multiply';
+            inputTextContent = 'x';
+            break;
+        case '/':
+            inputId = 'divide';
+            inputTextContent = '÷';
+            break;
+        default:
+            inputId = null;
+    }
+
+    if (!inputId && !isNaN(key.key)) {
+        inputId = 'number';
+        inputTextContent = key.key;
+    }
+
+    let input = {
+        id: inputId,
+        textContent: inputTextContent
+    }
+
+    return input;
+}
+
 function ButtonClick(input) {
+    if (input.id == 'dot' && operand.includes('.'))
+        return;
+
+    if (input.id == 'equals' && expression.length < 2)
+        return;
+
     if (input.id != 'clear' && input.id != 'erase') {
         if (resultDisplayed) {
             ClearEverything();
@@ -84,13 +146,24 @@ function SetValue(input) {
 function MultiplyDivide(expression) {
     let res = 0;
 
-    if (expression.includes('x') || expression.includes('÷')) {
+    if (expression.includes('x')) {
 
         let multiplicationIndex = expression.findIndex((e) => e == 'x');
 
         if (multiplicationIndex > 0) {
             res = parseFloat(expression[multiplicationIndex - 1]) * parseFloat(expression[multiplicationIndex + 1]);
             expression.splice(multiplicationIndex - 1, 3, res.toString());
+        }
+
+        return MultiplyDivide(expression);
+    }
+    else if (expression.includes('÷')) {
+
+        let divisionIndex = expression.findIndex((e) => e == '÷');
+
+        if (divisionIndex > 0) {
+            res = parseFloat(expression[divisionIndex - 1]) / parseFloat(expression[divisionIndex + 1]);
+            expression.splice(divisionIndex - 1, 3, res.toString());
         }
 
         return MultiplyDivide(expression);
@@ -124,6 +197,7 @@ function Evaluate() {
         res = expression;
     }
 
+    res = Math.round(res * 100) / 100;
     operand = res.toString();
     result.textContent = res;
     expression = [];
