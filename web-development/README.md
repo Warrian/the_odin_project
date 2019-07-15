@@ -11,7 +11,7 @@ This repository is meant to contain exercises and projects made in The Odin Proj
 - Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
   
 - Preview:
-  ![Rock Paper Scissors](https://github.com/Warrian/the_odin_project/blob/master/screenshots/rock_paper_scissors.png)
+  ![Rock Paper Scissors](https://github.com/Warrian/the_odin_project/blob/master/web-development/screenshots/rock_paper_scissors.png)
   
 # Project #2: ETCH A SKETCH
 
@@ -34,7 +34,7 @@ This repository is meant to contain exercises and projects made in The Odin Proj
 - (Optional): Instead of just changing the color of your grid from black to white (for example) have each pass through it with the mouse change to a completely random RGB value. Then try having each pass just add another 10% of black to it so that only after 10 passes is the square completely black.
 
 - Preview:
-![ETCH A SKETCH](https://github.com/Warrian/the_odin_project/blob/master/screenshots/etch_a_sketch.png)
+![ETCH A SKETCH](https://github.com/Warrian/the_odin_project/blob/master/web-development/screenshots/etch_a_sketch.png)
 
 # Project #3: CALCULATOR
 
@@ -69,4 +69,4 @@ This repository is meant to contain exercises and projects made in The Odin Proj
 - EXTRA CREDIT: Add keyboard support!
 
 - Preview:
-  ![CALCULATOR](https://github.com/Warrian/the_odin_project/blob/master/screenshots/calculator.png)
+  ![CALCULATOR](https://github.com/Warrian/the_odin_project/blob/master/web-development/screenshots/calculator.png)
