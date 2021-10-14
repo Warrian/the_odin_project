@@ -1,6 +1,6 @@
 This repository is meant to contain exercises and projects made in The Odin Project curriculum.
 
-# Project #1: ROCK PAPER SCISSORS
+# [Project #1: ROCK PAPER SCISSORS](https://ianscardoso.github.io/the-odin-project/web-development/rockpaperscissorsGUI/rockpaperscissors.html)
 
 - Create a blank HTML document with a script tag. This game is going to be played completely from the console, so don’t worry about putting anything else in there.
 
@@ -10,10 +10,7 @@ This repository is meant to contain exercises and projects made in The Odin Proj
 
 - Write a NEW function called game(). Use the previous function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end.
   
-- Preview:
-  ![Rock Paper Scissors](https://github.com/Warrian/the_odin_project/blob/master/web-development/screenshots/rock_paper_scissors.png)
-  
-# Project #2: ETCH A SKETCH
+# [Project #2: ETCH A SKETCH](https://ianscardoso.github.io/the-odin-project/web-development/etch-a-sketch/etch_a_sketch.html)
 
 - Create a webpage with a 16x16 grid of square divs
 
@@ -33,10 +30,7 @@ This repository is meant to contain exercises and projects made in The Odin Proj
 
 - (Optional): Instead of just changing the color of your grid from black to white (for example) have each pass through it with the mouse change to a completely random RGB value. Then try having each pass just add another 10% of black to it so that only after 10 passes is the square completely black.
 
-- Preview:
-![ETCH A SKETCH](https://github.com/Warrian/the_odin_project/blob/master/web-development/screenshots/etch_a_sketch.png)
-
-# Project #3: CALCULATOR
+# [Project #3: CALCULATOR](https://ianscardoso.github.io/the-odin-project/web-development/calculator/calculator.html)
 
 - Your calculator is going to contain functions for all of the basic math operators you typically find on simple calculators, so start by creating functions for the following items and testing them in your browser’s console.
   - add
@@ -67,6 +61,3 @@ This repository is meant to contain exercises and projects made in The Odin Proj
 - EXTRA CREDIT: Add a “backspace” button, so the user can undo if they click the wrong number.
 
 - EXTRA CREDIT: Add keyboard support!
-
-- Preview:
-  ![CALCULATOR](https://github.com/Warrian/the_odin_project/blob/master/web-development/screenshots/calculator.png)
